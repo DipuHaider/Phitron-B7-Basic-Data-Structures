@@ -1,0 +1,8 @@
+N = 1000
+
+1    Constant:       0(1)          ->1
+4    Linear:         0(N)          ->1000
+2    Logarithmic:    0(logN)       ->10
+3    Squire Root:    0(sqrt(N))    ->32
+6    Quadric:        0(N*N)        ->1000000
+5    Linearithmic:   0(NlogN)      ->100000
