@@ -1,0 +1,78 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+class Node {
+public:
+    int value;
+    Node* next;
+
+    Node(int value){
+        this->value = value;
+        this->next = NULL;
+    }
+};
+
+void insert_at_tail(Node* &head, Node* &tail, int value) {
+    Node* new_node = new Node(value); // Create a new node
+
+    if(head == NULL) { // If the list is empty, make new_node the head
+        head = new_node;
+        return;
+    }
+    
+    Node* temp = head; // Start from the head node
+    while(temp->next != NULL) {
+        temp = temp->next; // Move to the last node
+    }
+    temp->next = new_node; // Link the new node at the end of the list
+}
+
+void print_linked_list(Node* head) {
+    Node* temp = head; // Start from the head node
+    while(temp != NULL) {
+        cout << temp->value << endl; // Print value of the current node
+        temp = temp->next; // Move to the next node
+    }
+}
+
+void sort_linked_list(Node* head) {
+
+    for(Node* i = head; i->next != NULL; i = i->next) {
+        for(Node* j = i->next; j != NULL; j = j->next) {
+            if(i->value > j->value) { // Compare values
+                swap(i->value, j->value); // Swap values if they are in the wrong order
+            }
+        }
+    }
+
+}
+
+int main() {
+
+    Node* head = NULL;
+    Node* tail = NULL;
+
+    int value;
+    while(true) {
+        cin >> value; // Read value from input
+        if(value == -1){
+            break;
+        } // Stop reading if -1 is encountered
+
+        insert_at_tail(head, tail, value); // Insert the value at the tail of the linked list
+    }
+    sort_linked_list(head); // Delete the head node, will delete the first node 10
+    print_linked_list(head); // Print the linked list
+
+    return 0;
+}
+
+//input
+// 20 30 10 50 40 -1
+
+//output
+// 10
+// 20
+// 30
+// 40
+// 50
